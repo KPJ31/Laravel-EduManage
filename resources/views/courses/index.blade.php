@@ -6,8 +6,8 @@
             <div class="d-flex justify-content-between align-items-center mb-3">
                 <h2 class="fw-bold text-primary">📚 Courses List</h2>
                 <div>
-                   <a href="{{ route('dashboard') }}" class="btn btn-secondary shadow-sm">⬅ Dashboard</a> 
-                   <a href="{{ route('courses.create') }}" class="btn btn-success shadow-sm">➕ Create Course</a>
+                   <a href="{{ route('dashboard') }}" class="btn btn-secondary shadow-sm"><i class="bi bi-backspace"></i>Dashboard</a> 
+                   <a href="{{ route('courses.create') }}" class="btn btn-success shadow-sm"><i class="bi bi-plus-square"></i>Create Course</a>
                 </div>                
             </div>
 
@@ -35,12 +35,12 @@
                                     <td>{{ $course->gpa }}</td>
                                     <td>{{ $course->description }}</td>
                                     <td class="text-center">
-                                        <a href="{{ route('courses.show', $course->id) }}" class="btn btn-info btn-sm shadow-sm me-1">👁Show</a>
-                                        <a href="{{ route('courses.edit', $course->id) }}" class="btn btn-warning btn-sm shadow-sm me-1">✏️Edit</a>
+                                        <a href="{{ route('courses.show', $course->id) }}" class="btn btn-info btn-sm shadow-sm me-1"><i class="bi bi-eye"></i> Show</a>
+                                        <a href="{{ route('courses.edit', $course->id) }}" class="btn btn-warning btn-sm shadow-sm me-1"><i class="bi bi-pencil-square"></i> Edit</i></a>
                                         <form action="{{ route('courses.destroy', $course->id) }}" method="POST" class="d-inline">
                                             @csrf
                                             @method('DELETE')
-                                            <button type="submit" class="btn btn-danger btn-sm shadow-sm"onclick="return confirm('Are you sure you want to delete this course?')">🗑Delete</button>
+                                            <button type="submit" class="btn btn-danger btn-sm shadow-sm"onclick="return confirm('Are you sure you want to delete this course?')"><i class="bi bi-trash3"></i> Delete</button>
                                         </form>
                                     </td>
                                 </tr>
