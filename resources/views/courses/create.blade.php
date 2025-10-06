@@ -4,7 +4,7 @@
     <div class="row">
         <div class="col-md-8 mx-auto">
             <div class="card p-4 shadow-lg border-0 rounded-4">
-                <h1 class="mb-4 text-center fw-bold text-primary">📚 Add Course</h1>
+                <h1 class="mb-4 text-center fw-bold text-primary"><i class="bi bi-plus-square"></i> Add Course</h1>
                 <form action="{{ route('courses.store') }}" method="post" class="needs-validation" novalidate>
                     @csrf
 
