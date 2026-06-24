@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Course;
 use App\Models\Student;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class StudentController extends Controller
 {
@@ -58,11 +59,23 @@ class StudentController extends Controller
             'sprofile' => $profilePath,
         ]);
 
-        $student->studentDetail()->create([
+        $studentDetail = $student->studentDetail()->create([
             'email' => $validated['email'],
             'address' => $validated['address'],
             'phone' => $validated['phone'],
         ]);
+
+        Mail::send(
+            'emails.student-created',
+            [
+                'student' => $student,
+                'studentDetail' => $studentDetail,
+            ],
+            function ($message) {
+                $message->to('kpjanagpt@gmail.com')
+                    ->subject('New Student Created');
+            }
+        );
 
         return redirect()->route('students.index')->with('Success', 'Student Created Successfully');
     }
